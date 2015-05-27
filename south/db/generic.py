@@ -8,7 +8,7 @@ from django.core.management.color import no_style
 from django.db import transaction, models
 from django.db.utils import DatabaseError
 from django.db.backends.util import truncate_name
-if django.VERSION[0:2] >= (1,8,):
+if django.get_version() >= '1.8':
     from django.db.backends.base.creation import BaseDatabaseCreation
 else:
     from django.db.backends.creation import BaseDatabaseCreation
