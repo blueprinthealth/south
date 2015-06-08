@@ -3,11 +3,15 @@ from __future__ import print_function
 import re
 import sys
 
+import django
 from django.core.management.color import no_style
 from django.db import transaction, models
 from django.db.utils import DatabaseError
 from django.db.backends.util import truncate_name
-from django.db.backends.creation import BaseDatabaseCreation
+if django.get_version() >= '1.8':
+    from django.db.backends.base.creation import BaseDatabaseCreation
+else:
+    from django.db.backends.creation import BaseDatabaseCreation
 from django.db.models.fields import NOT_PROVIDED
 from django.dispatch import dispatcher
 from django.conf import settings
